@@ -52,7 +52,13 @@ st.caption(caption_block)
 tab1, tab2 =st.tabs(["Sentimental","Spelling Correction"])
 with tab1:
     st.header("Sentimental Analysis")
-    sentiment_text=st.text_area(label="Enter the to analyse",value="it  rainingg")
+    sentiment_text=st.text_area(label="Enter the to analyse",value="Coleman had to repeatedly say his catch phrase for it to stick, but Wolstenholme only had to say his most memorable phrase once.
+
+With England 3-2 up in extra time of the World Cup final, striker Geoff Hurst charged up the field on the break in the dying moments.
+
+Some of the over-excited Wembley crowd invaded the field in the mistaken belief that the final whistle had been blown. As Hurst smashed the ball past West Germany goalkeeper Hans Tilkowski, Wolstenholme uttered the immortal words, "Here comes Hurst. Some people are on the pitch, they think it's all over. It is now! It's four!"
+
+Wolstenholme's words have taken on extra significance as the years have passed with no more English success on the international stage, and there was even a sports quiz show which took the famous line for its name in the 1990's")
     sentiment_output = get_sentiment(text=sentiment_text)
     st.metric(label="Score",value=sentiment_output[0],delta=round(sentiment_output[1],2))
     sentence_sentiment=get_sentimental_sen(sentiment_text)
