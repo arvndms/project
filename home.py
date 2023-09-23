@@ -5,6 +5,8 @@ from redlines import Redlines
 from IPython.display import HTML,display
 import subprocess
 import sys
+import nltk
+nltk.download('punkt')
 subprocess.run([f"{sys.executable}","download_corpora.py"])
 def  get_sentiment(text:str,threshold:float=0.3):
     blob = TextBlob(text)
