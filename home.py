@@ -1,9 +1,11 @@
 import streamlit as st
-import subprocess 
-subprocess.run(['python3','-m','textblob.download_corpora'])
+
 from textblob import TextBlob
 from redlines import Redlines 
 from IPython.display import HTML,display
+import subprocess
+import sys
+subprocess.run([f"{sys.executable}","download_corpora.py"])
 from textblob import Word
 def  get_sentiment(text:str,threshold:float=0.3):
     blob = TextBlob(text)
