@@ -2,7 +2,6 @@ import streamlit as st
 
 from textblob import TextBlob
 from redlines import Redlines 
-from IPython.display import HTML,display
 import subprocess
 import sys
 import nltk
