@@ -6,7 +6,7 @@ import subprocess
 import sys
 import nltk
 nltk.download('punkt')
-nltk.download('average_preception_tagger')
+nltk.download('averaged_preceptron_tagger')
 subprocess.run([f"{sys.executable}","download_corpora.py"])
 def get_pos(text:str):
     blob=TextBlob(text)
