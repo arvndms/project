@@ -1,13 +1,25 @@
 import streamlit as st
-
+import pandas as pd
 from textblob import TextBlob
 from redlines import Redlines 
 import subprocess
 import sys
 import nltk
 nltk.download('punkt')
+nltk.download('average_preception_tagger')
 subprocess.run([f"{sys.executable}","download_corpora.py"])
-def  get_sentiment(text:str,threshold:float=0.3):
+def get_pos(text:str):
+    blob=TextBlob(text)
+    tags={}
+    for z,n in blob.tags:
+      tags[z]=n
+
+    df=pd.DataFrame(data=tags,index=['words'])
+    
+    return df
+
+     
+def get_sentiment(text:str,threshold:float=0.3):
     blob = TextBlob(text)
     sentiment:float = blob.sentiment.polarity
     friendly_threshold:float=threshold
@@ -49,7 +61,7 @@ def red(spellcheck,spellcheck_output):
     
 st.title('Natural Language Processing')
 st.caption(caption_block)
-tab1, tab2 =st.tabs(["Sentimental","Spelling Correction"])
+tab1, tab2 ,tab3=st.tabs(["Sentimental","Spelling Correction","Part of Speech "])
 with tab1:
     commentry="""Coleman had to repeatedly say his catch phrase for it to stick, but Wolstenholme only had to say his most memorable phrase once.
 
@@ -81,3 +93,8 @@ with tab2:
     with col2:
         st.markdown("Input📝")
         st.write(spellcheck)
+with tab3:
+    st.markdown("Part of speech Tagging")
+    pos=st.text_input(label="Enter Text",value="I am on the phone")
+    pos_output=get_pos(pos)
+    st.write(pos_output)
