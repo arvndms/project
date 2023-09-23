@@ -6,13 +6,15 @@ import subprocess
 import sys
 import nltk
 nltk.download('punkt')
-nltk.download('averaged_preceptron_tagger')
+nltk.download('averaged_perceptron_tagger')
 subprocess.run([f"{sys.executable}","download_corpora.py"])
+
+
 def get_pos(text:str):
     blob=TextBlob(text)
     tags={}
     for z,n in blob.tags:
-      tags[z]=n
+      tags[n]=z
 
     df=pd.DataFrame(data=tags,index=['words'])
     
