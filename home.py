@@ -198,4 +198,3 @@ Now this cat essay will discuss the nature of cats. Cats are very lazy creatures
     st.altair_chart(altair_chart=token_chart,use_container_width=True)
 
 
-
